@@ -7,7 +7,7 @@
 //
 
 #import "XSAlertManager.h"
-#import <MBProgressHUD.h>
+#import "MBProgressHUD.h"
 
 #define BUTTON_OKAY @"确定"
 #define BUTTON_YES @"是"
