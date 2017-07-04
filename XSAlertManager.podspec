@@ -10,6 +10,5 @@ s.platform     = :ios, '8.0'
 s.requires_arc = true                   #是否使用ARC，如果指定具体文件，则具体的问题使用ARC
 s.source_files = 'XSAlertManager/**/*.{h,m}'
 #s.resources    = 'XSBreakthroughtModule/Resource/*.{png}'
-#s.frameworks = 'AFNetworking'
-#s.dependency = 'AFNetworking'
+s.dependency 'MBProgressHUD'  #依赖的第三方库
 end
