@@ -134,4 +134,25 @@
  *  @param showView 显示在那个View上
  */
 + (void) showText:(NSString*)str onView:(UIView *)showView;
+
+/**********************加载提示框************************/
+
+
+/**
+ 显示加载动画提示
+
+ @param loadding gif动画名称
+ @param title 提醒标题
+ @param showView 显示在哪个view上
+ */
++ (void)showLoadding:(NSString *)loadding title:(NSString *)title onView:(UIView *)showView;
+
+
+/**
+ 隐藏加载动画提示
+
+ @param showView 要隐藏哪个view上的提示
+ */
++ (void)hideLoaddingOnView:(UIView *)showView;
+
 @end

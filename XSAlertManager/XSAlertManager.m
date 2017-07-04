@@ -7,7 +7,8 @@
 //
 
 #import "XSAlertManager.h"
-#import <MBProgressHUD.h>
+#import "MBProgressHUD.h"
+#import "CADisplayLineImageView.h"
 
 #define BUTTON_OKAY @"确定"
 #define BUTTON_YES @"是"
@@ -397,6 +398,40 @@ static __strong NSString *__alertDefaultTitle = @"提示";
     hud.mode = MBProgressHUDModeCustomView;
     hud.customView = label;
     [hud hide:YES afterDelay:2];
+}
+
++ (void)showLoadding:(NSString *)loadding title:(NSString *)title onView:(UIView *)showView{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:showView animated:YES];
+    
+    UIImage *image = [CADisplayLineImage imageNamed:loadding];
+    if (image) {
+        CADisplayLineImageView *displayImageView = [[CADisplayLineImageView alloc] init];
+        [displayImageView setImage:[CADisplayLineImage imageNamed:loadding]];
+        
+        //设置hud模式
+        hud.mode = MBProgressHUDModeCustomView;
+        
+        hud.customView = displayImageView;
+    }else{
+//        hud.mode = MBProgressHUDModeText;
+    }
+    
+    //设置在hud影藏时将其从SuperView上移除,自定义情况下默认为NO
+    hud.removeFromSuperViewOnHide = YES;
+    
+    //设置方框view为该模式后修改颜色才有效果
+    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+    
+    //设置方框view背景色
+    hud.bezelView.backgroundColor = [UIColor clearColor];
+    hud.label.text = title;
+    
+    //设置总背景view的背景色，并带有透明效果
+    hud.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.1];
+}
+
++ (void)hideLoaddingOnView:(UIView *)showView{
+    [MBProgressHUD hideHUDForView:showView animated:YES];
 }
 
 @end
